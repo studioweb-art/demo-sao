@@ -3,44 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Restaurante Saó · Alzira. Cocina con raíces, empanadillas argentinas, croquetas y milanesas. Carta online con QR.">
+<meta name="description" content="Restaurante Saó · Alzira. Cocina mediterránea con raíces: empanadillas argentinas, croquetas, milanesas y arroces. Consulta la carta y reserva tu mesa.">
 <title>Restaurante Saó · Alzira</title>
 <style>
+  :root { --oro:#b98a2f; --tinta:#1e1c18; --crema:#faf6ef; --gris:#6f6a60; --linea:#e7ddc9; }
   * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif; background:#faf7f2; color:#2b2b2b; }
-  .hero { position:relative; min-height:78vh; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff;
-    background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url('bar-hero.jpg'); background-size:cover; background-position:center; padding:40px 20px; }
-  .hero-inner { max-width:640px; }
-  .hero .kicker { font-size:13px; letter-spacing:3px; text-transform:uppercase; opacity:.9; }
-  .hero h1 { font-size:46px; margin:10px 0 6px; }
-  .hero p.sub { font-size:17px; opacity:.92; }
-  .divider { width:64px; height:3px; background:#d4a24e; margin:16px auto; border-radius:2px; }
-  .social { display:flex; gap:14px; justify-content:center; margin-top:6px; }
-  .social a { width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; text-decoration:none; }
-  .social svg { width:20px; height:20px; fill:#fff; }
-  .wrap { max-width:720px; margin:0 auto; padding:26px 18px 40px; }
-  .aviso { background:#fff8e6; border:1px solid #f0d48a; border-radius:10px; padding:12px 16px; font-size:14px; margin-bottom:18px; }
-  h2.sec { font-size:22px; margin:26px 0 4px; }
-  p.sec-sub { color:#777; font-size:14px; margin-bottom:12px; }
-  .plato { display:flex; justify-content:space-between; gap:12px; padding:11px 2px; border-bottom:1px dashed #e2d9c8; }
-  .plato b { font-size:15px; }
-  .plato span.desc { display:block; color:#777; font-size:13px; margin-top:2px; }
-  .precio { white-space:nowrap; font-weight:700; color:#8a6d2b; }
-  .contacto { background:#2b2b2b; color:#fff; border-radius:14px; padding:22px; margin-top:28px; text-align:center; }
-  .contacto a.tel { display:inline-block; margin-top:10px; background:#d4a24e; color:#2b2b2b; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:30px; }
-  footer { text-align:center; color:#999; font-size:12px; padding:18px; }
-  @media (max-width:520px){ .hero h1 { font-size:34px; } }
+  html { scroll-behavior:smooth; }
+  body { font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif; background:var(--crema); color:var(--tinta); line-height:1.55; }
+  .serif { font-family:Georgia,'Times New Roman',serif; }
+  /* Barra superior */
+  .topbar { position:sticky; top:0; z-index:30; background:rgba(30,28,24,.96); color:#fff; display:flex; align-items:center; justify-content:space-between; padding:10px 18px; }
+  .topbar .marca { font-family:Georgia,serif; font-size:19px; letter-spacing:.5px; }
+  .topbar .marca small { display:block; font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--oro); }
+  .topbar nav { display:flex; gap:16px; align-items:center; }
+  .topbar nav a { color:#e9e2d3; text-decoration:none; font-size:13.5px; }
+  .topbar nav a.llamar { background:var(--oro); color:#1e1c18; font-weight:700; padding:8px 16px; border-radius:20px; }
+  @media (max-width:560px){ .topbar nav a:not(.llamar){ display:none; } }
+  /* Héroe */
+  .hero { position:relative; min-height:86vh; display:flex; align-items:flex-end; color:#fff;
+    background:linear-gradient(to top,rgba(10,9,7,.82) 0%,rgba(10,9,7,.35) 55%,rgba(10,9,7,.45) 100%),url('bar-hero.jpg');
+    background-size:cover; background-position:center; }
+  .hero-inner { max-width:760px; margin:0 auto; padding:70px 22px 46px; width:100%; }
+  .kicker { font-size:12px; letter-spacing:3.5px; text-transform:uppercase; color:#e8c97a; }
+  .hero h1 { font-family:Georgia,serif; font-weight:400; font-size:58px; line-height:1.05; margin:10px 0 8px; }
+  .hero .sub { font-size:17px; color:#f0e9d8; max-width:560px; }
+  .hero .botones { display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; }
+  .btn { display:inline-block; text-decoration:none; font-weight:700; font-size:15px; padding:13px 28px; border-radius:30px; }
+  .btn-oro { background:var(--oro); color:#1e1c18; }
+  .btn-linea { border:1.5px solid rgba(255,255,255,.7); color:#fff; }
+  .social { display:flex; gap:10px; margin-top:18px; align-items:center; }
+  .social span { font-size:12.5px; color:#d9d2c2; }
+  .social a { width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.14); display:inline-flex; align-items:center; justify-content:center; }
+  .social svg { width:18px; height:18px; fill:#fff; }
+  @media (max-width:560px){ .hero h1{ font-size:38px; } }
+  /* Franja info */
+  .franja { background:var(--tinta); color:#e9e2d3; }
+  .franja .fila { max-width:760px; margin:0 auto; padding:14px 22px; display:flex; gap:8px 26px; flex-wrap:wrap; font-size:13.5px; }
+  .franja b { color:var(--oro); font-weight:600; }
+  /* Contenido */
+  .wrap { max-width:760px; margin:0 auto; padding:30px 22px 46px; }
+  .aviso { background:#fff; border:1px solid var(--linea); border-left:4px solid var(--oro); border-radius:8px; padding:12px 16px; font-size:13.5px; color:#5c5546; margin-bottom:8px; }
+  .seccion { margin-top:34px; }
+  .seccion .etiqueta { font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color:var(--oro); font-weight:700; }
+  .seccion h2 { font-family:Georgia,serif; font-weight:400; font-size:30px; margin:4px 0 2px; }
+  .seccion .bajada { color:var(--gris); font-size:14px; margin-bottom:6px; }
+  .plato { display:flex; justify-content:space-between; gap:14px; padding:13px 2px; border-bottom:1px solid var(--linea); }
+  .plato:last-child { border-bottom:none; }
+  .plato b { font-size:15.5px; font-weight:600; }
+  .plato .desc { display:block; color:var(--gris); font-size:13px; margin-top:2px; }
+  .precio { white-space:nowrap; font-family:Georgia,serif; font-size:16px; color:#8a6d2b; }
+  .destacado { background:#1e1c18; color:#f3ecdd; border-radius:14px; padding:22px; margin-top:26px; }
+  .destacado h3 { font-family:Georgia,serif; font-weight:400; font-size:22px; color:#e8c97a; }
+  .destacado ul { margin:10px 0 0 18px; font-size:14.5px; }
+  .destacado .precio-menu { font-family:Georgia,serif; font-size:26px; color:#fff; margin-top:10px; }
+  /* Contacto */
+  .contacto { margin-top:34px; background:#fff; border:1px solid var(--linea); border-radius:14px; padding:24px; text-align:center; }
+  .contacto h2 { font-family:Georgia,serif; font-weight:400; font-size:24px; }
+  .contacto .dir { color:var(--gris); font-size:14px; margin-top:4px; }
+  .contacto .acciones { display:flex; gap:10px; justify-content:center; margin-top:16px; flex-wrap:wrap; }
+  footer { text-align:center; color:#a39c8b; font-size:12px; padding:20px; }
 </style>
 </head>
 <body>
 
+<div class="topbar">
+  <div class="marca">Saó<small>Alzira</small></div>
+  <nav>
+    <a href="#carta">Carta</a>
+    <a href="#menu">Menú del día</a>
+    <a href="#contacto">Contacto</a>
+    <a class="llamar" href="tel:+34962831615">📞 Llamar</a>
+  </nav>
+</div>
+
 <section class="hero">
   <div class="hero-inner">
-    <div class="kicker">Alzira · Cocina con raíces</div>
-    <h1>Restaurante Saó</h1>
-    <p class="sub">Sabor, identidad y raíces en el corazón de Alzira</p>
-    <div class="divider"></div>
+    <div class="kicker">Restaurante · Alzira</div>
+    <h1 class="serif">Sabor, identidad<br>y raíces</h1>
+    <p class="sub">Cocina mediterránea con toques argentinos en el corazón de Alzira. Empanadillas, croquetas, milanesas y arroces — también sin gluten.</p>
+    <div class="botones">
+      <a class="btn btn-oro" href="#carta">Ver la carta</a>
+      <a class="btn btn-linea" href="tel:+34962831615">Reservar mesa</a>
+    </div>
     <div class="social">
+      <span>Síguenos</span>
       <a href="https://www.instagram.com/restaurantesaoalzira/" aria-label="Instagram" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 3.6a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8 4 4 0 010 8zm6.4-10.5a1.4 1.4 0 11-2.9 0 1.4 1.4 0 012.9 0z"/></svg>
       </a>
@@ -51,33 +97,67 @@
   </div>
 </section>
 
-<div class="wrap">
-  <div class="aviso">📋 <b>Carta de muestra:</b> platos y precios de ejemplo para enseñar cómo quedaría. La cambiamos por la suya real cuando nos la pasen.</div>
-
-  <h2 class="sec">Para empezar</h2>
-  <p class="sec-sub">Tapas y entrantes</p>
-  <div class="plato"><div><b>Empanadillas argentinas</b><span class="desc">Receta de la casa, hechas al momento</span></div><div class="precio">6,50 €</div></div>
-  <div class="plato"><div><b>Croquetas cremosas</b><span class="desc">De jamón y de setas</span></div><div class="precio">7,00 €</div></div>
-  <div class="plato"><div><b>Ensaladilla de la casa</b><span class="desc">Con atún y mayonesa suave</span></div><div class="precio">5,50 €</div></div>
-
-  <h2 class="sec">Principales</h2>
-  <p class="sec-sub">Platos fuertes</p>
-  <div class="plato"><div><b>Milanesa con guarnición</b><span class="desc">De pollo o ternera, con patatas</span></div><div class="precio">11,50 €</div></div>
-  <div class="plato"><div><b>Arroz del día</b><span class="desc">Pregunta por el arroz de hoy</span></div><div class="precio">12,00 €</div></div>
-  <div class="plato"><div><b>Opción sin gluten</b><span class="desc">Empanadillas, croquetas y milanesas gluten free</span></div><div class="precio">—</div></div>
-
-  <h2 class="sec">Postres</h2>
-  <p class="sec-sub">Dulces caseros</p>
-  <div class="plato"><div><b>Tarta del día</b><span class="desc">Pregunta por la de hoy</span></div><div class="precio">4,50 €</div></div>
-  <div class="plato"><div><b>Café y licor</b><span class="desc">Para cerrar bien</span></div><div class="precio">2,50 €</div></div>
-
-  <div class="contacto">
-    <div>📍 C/ Santos 2, Alzira</div>
-    <div style="margin-top:6px; opacity:.85; font-size:14px;">Lun–Dom · consulta horarios en sus redes</div>
-    <a class="tel" href="tel:+34962831615">📞 Llamar</a>
+<div class="franja">
+  <div class="fila">
+    <div><b>📍</b> C/ Santos 2, Alzira</div>
+    <div><b>📞</b> 962 83 16 15</div>
+    <div><b>🕐</b> Consulta horarios en Instagram</div>
   </div>
 </div>
 
-<footer>Muestra gratuita · carta de ejemplo pendiente de la real</footer>
+<div class="wrap" id="carta">
+  <div class="aviso">📋 <b>Carta de muestra:</b> platos y precios orientativos para enseñar el diseño. La sustituimos por la carta real del restaurante cuando nos la faciliten.</div>
+
+  <div class="seccion">
+    <div class="etiqueta">Para empezar</div>
+    <h2 class="serif">Entrantes</h2>
+    <p class="bajada">Para abrir boca y compartir</p>
+    <div class="plato"><div><b>Empanadillas argentinas</b><span class="desc">Receta de la casa, hechas al momento</span></div><div class="precio">6,50 €</div></div>
+    <div class="plato"><div><b>Croquetas cremosas</b><span class="desc">De jamón ibérico y de setas</span></div><div class="precio">7,00 €</div></div>
+    <div class="plato"><div><b>Ensaladilla de la casa</b><span class="desc">Con atún, huevo y mayonesa suave</span></div><div class="precio">5,50 €</div></div>
+    <div class="plato"><div><b>Patatas bravas Saó</b><span class="desc">Con alioli y salsa brava de la casa</span></div><div class="precio">5,00 €</div></div>
+  </div>
+
+  <div class="seccion">
+    <div class="etiqueta">Platos fuertes</div>
+    <h2 class="serif">Principales</h2>
+    <p class="bajada">Nuestros imprescindibles</p>
+    <div class="plato"><div><b>Milanesa con guarnición</b><span class="desc">De pollo o ternera, con patatas caseras</span></div><div class="precio">11,50 €</div></div>
+    <div class="plato"><div><b>Arroz del día</b><span class="desc">Pregunta por el arroz de hoy</span></div><div class="precio">12,00 €</div></div>
+    <div class="plato"><div><b>Secreto ibérico</b><span class="desc">A la brasa, con verduras de temporada</span></div><div class="precio">14,00 €</div></div>
+    <div class="plato"><div><b>Opciones sin gluten</b><span class="desc">Empanadillas, croquetas y milanesas gluten free</span></div><div class="precio">Consultar</div></div>
+  </div>
+
+  <div class="destacado" id="menu">
+    <h3>Menú del día</h3>
+    <ul>
+      <li>Primero + segundo a elegir entre las sugerencias</li>
+      <li>Postre casero, pan y bebida incluidos</li>
+      <li>De lunes a viernes al mediodía</li>
+    </ul>
+    <div class="precio-menu">14,50 €</div>
+  </div>
+
+  <div class="seccion">
+    <div class="etiqueta">Dulces caseros</div>
+    <h2 class="serif">Postres</h2>
+    <p class="bajada">El final feliz</p>
+    <div class="plato"><div><b>Tarta del día</b><span class="desc">Pregunta por la de hoy</span></div><div class="precio">4,50 €</div></div>
+    <div class="plato"><div><b>Flan de huevo con nata</b><span class="desc">Receta tradicional</span></div><div class="precio">4,00 €</div></div>
+    <div class="plato"><div><b>Café y licor</b><span class="desc">Para cerrar bien la comida</span></div><div class="precio">2,50 €</div></div>
+  </div>
+
+  <div class="contacto" id="contacto">
+    <h2 class="serif">Reserva tu mesa</h2>
+    <p class="dir">C/ Santos 2 · 46600 Alzira (Valencia)</p>
+    <div class="acciones">
+      <a class="btn btn-oro" href="tel:+34962831615">📞 962 83 16 15</a>
+      <a class="btn" style="border:1.5px solid var(--tinta); color:var(--tinta);" href="https://www.google.com/maps/search/?api=1&query=Restaurante+Sa%C3%B3+Santos+2+Alzira" target="_blank" rel="noopener">📍 Cómo llegar</a>
+    </div>
+    <p class="dir" style="margin-top:12px;">También en <a href="https://www.instagram.com/restaurantesaoalzira/" target="_blank" rel="noopener">Instagram</a> y <a href="https://www.facebook.com/RestaurantSaoAlzira/" target="_blank" rel="noopener">Facebook</a></p>
+  </div>
+</div>
+
+<footer>Página de muestra gratuita · Contenido de ejemplo pendiente de la carta real</footer>
 </body>
 </html>
